@@ -1,38 +1,40 @@
+body {
+  background-color: #333;
+}
 .App {
+  margin: 1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* HEADER */
+header {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+header img{
+  width: 20rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Les boutons sur la page d'accueil */
+.link {
+  color: black;
+}
+.btnRemplir, .btnListe {
+  display: inline-block;
+  position: relative;
+  background-color: aliceblue;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  width: 35rem;
+  height: 15rem;
+  border: 0.5rem solid #54AD3F;
+}
+.btnRemplir h2, .btnListe h2 {
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 40%;
+  left: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
