@@ -1,14 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import logo from "../images/logo-clean3000-transparent.png"
 
 const Header = () => {
+    const navigate = useHistory();
+    const goToHome = () => {
+        navigate.push("/");
+    }
     return (
-        <Link to="/">
-            <header className="App-header">
+            <header className="App-header" onClick={() => goToHome()}>
                 <img src={logo} alt="" />
             </header>
-        </Link>
     )
 }
 

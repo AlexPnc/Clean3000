@@ -4,56 +4,52 @@ import Header from './Header';
 
 const ListeAvis = () => {
 
-  const [selectedAvi, setSelectedAvi] = useState({});
-  const [avis, SetAvis] = useState([]);
+  const [avis, setAvis] = useState([]);
 
   const getAvis = async () => {
     const json = await fetch("http://localhost:1337/api/avis").then(response => response.json());
-    SetAvis(json.data)
+    setAvis(json.data)
   }
 
   useEffect(() => {
     getAvis();
   }, []);
 
-  const handleChange = (event) => {
-    const id = event.target.value;
-    const index = avis.findIndex(avi => {
-      return avi.id === id;
-    });
-    setSelectedAvi(avis[index]);
-  };
+  const deleteTodo = (item) => {
 
-  const selectedAviDisplay = () => {
+    const copyAvis = [...avis];
+    let position = copyAvis.indexOf(item);
+    copyAvis.splice(position, 1);
+    setAvis(copyAvis);
+  }
+
+  console.log(avis);
+
+  const renderAvis = () => {
+    const listAvis = avis.map(item => {
       return (
-        <div className="order-details">
-          <h2>Détail de la commande n°{selectedAvi.id}</h2>
+        <div>
+          {item.attributes.name} - {item.attributes.date} {item.attributes.observation} { }
         </div>
       );
-    }
-
-  const avisList = avis.map(avi => {
+    });
     return (
-      <option key={avi.id} value={avi.id}>{avi.id}</option>
+      <div className="listAvis">
+        <h2>La liste des avis de passage : </h2>
+
+        {listAvis}
+
+
+      </div >
+
     );
-  });
+
+  }
 
   return (
     <div className="App">
       <Header />
-
-      <div className="avis-selection">
-        <label htmlFor="orderSelect">Sélectionner l'avis de passage :</label>
-        <select id="orderSelect" onChange={e => handleChange(e)}>
-          <option value=""></option>
-          {avisList}
-        </select>
-      </div>
-
-      <div>
-        {selectedAviDisplay()}
-      </div>
-
+      {renderAvis()}
     </div>
 
   )

@@ -10,7 +10,8 @@ body {
 header {
   text-align: center;
   margin-top: 2rem;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
+  cursor: pointer;
 }
 header img{
   width: 20rem;
@@ -21,6 +22,7 @@ header img{
   color: black;
 }
 .btnRemplir, .btnListe {
+  cursor: pointer;
   display: inline-block;
   position: relative;
   background-color: aliceblue;
@@ -30,6 +32,8 @@ header img{
   width: 35rem;
   height: 15rem;
   border: 0.5rem solid #54AD3F;
+  overflow: hidden;
+  color: rgb(241, 247, 234);
 }
 .btnRemplir h2, .btnListe h2 {
   position: absolute;
@@ -37,4 +41,84 @@ header img{
   top: 40%;
   left: 50%;
 }
+.feuille {
+  position: absolute;
+  left: -7rem;
+  top: -2rem;
+  width: 45rem;
+  height: 20rem;
+  color: aqua;
+
+}
+
+/* Page de remplissage de l'avis de passage */
+.containerForm{
+  border: 0.5rem solid #54AD3F;
+  padding: 0 2rem 3rem 2rem;
+  display: inline-block;
+}
+.titleFill{
+  color: aliceblue;
+}
+label {
+  display: block;
+}
+form {
+  display: inline-block;
+  padding: 4rem;
+  background-color: #54AD3F;
+  font-weight: bold;
+}
+.containerName, .containerDate, .containerObservation  {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+.inputObservation {
+  width: 25rem;
+  height: 10rem;
+}
+.btn {
+    display: block;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    padding: 25px 80px;
+    background: rgb(255,209,123);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 6px #efa424;
+    border-radius: 20px;
+}
+.btn:hover {
+    box-shadow: 0 4px #efa424;
+    top: 2px;
+}
+.btn:active {
+    box-shadow: 0 0 #efa424;
+    top: 6px;
+}
+.move{
+  position: relative;
+}
+.backHome {
+  cursor: pointer;
+  position: absolute;
+  left: 10rem;
+  padding: 1rem;
+  color: aliceblue;
+  text-decoration: underline;
+}
+.goList {
+  cursor: pointer;
+  position: absolute;
+  left: 26rem;
+  padding: 1rem;
+  color: aliceblue;
+  text-decoration: underline;
+}
+
+/* Page Liste des avis de passage */
 
