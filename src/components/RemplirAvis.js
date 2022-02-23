@@ -4,47 +4,57 @@ import { useState } from 'react';
 
 const RemplirAvis = () => {
 
-  const [avis, setAvis] = useState([{
-    id: 0,
+  const [avi, setAvi] = useState({
     name: "",
-    date: 0,
+    date:"",
     observation: ""
-  }]);
+  });
 
   const handleChange = (key, value) => {
-    setAvis({
-      ...avis,
+    setAvi({
+      ...avi,
       [key]: value
     })
   };
 
-  const handleSubmit = () => {
-    const newAvis = {id: Date.now(), name:"", date:0, observation:""};
-    const copyAvis= [...avis];
-    copyAvis.push(newAvis);
-    setAvis(copyAvis)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch ("http://localhost:1337/api/avis", {
+      method: "POST",
+      body: JSON.stringify({data:avi}),
+      headers: {
+        "Content-Type":"application/json"
+      }
+    });
+    setAvi({
+      name:"",
+      date:"",
+      observation:""
+    })
   };
 
   return (
     <div className='App'>
       <Header />
+      <p>Avis de passage : </p>
+
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="containerName">
-          <label htmlFor="inputName">Nom :</label>
-          <input id="inputName" type="text" value={avis.name} onChange={(e) => handleChange("name", e.target.value)} />
+          <label htmlFor="inputName">Nom du client/ de l'entreprise :</label>
+          <input id="inputName" type="text" value={avi.name} onChange={(e) => handleChange("name", e.target.value)} />
         </div>
 
         <div className="containerDate">
-          <label htmlFor="inputDate">Prix :</label>
-          <input id='inputDate' type="text" value={avis.date} onChange={(e) => handleChange("date", e.target.value)} />
+          <label htmlFor="inputDate">Date de l'intervention :</label>
+          <input id='inputDate' type="date" value={avi.date} onChange={(e) => handleChange("date", e.target.value)} />
         </div>
 
         <div className="containerObservation">
-          <label htmlFor="inputImage">Url de l'image :</label>
-          <input id='inputImage' type="text" value={avis.observation} onChange={(e) => handleChange("observation", e.target.value)} />
+          <label htmlFor="inputObservation">Observations :</label>
+          <input id='inputObservation' type="text" value={avi.observation} onChange={(e) => handleChange("observation", e.target.value)} />
         </div>
 
-        <input type="submit" value="Ajouter le légume" />
+        <input type="submit" value="Ajouter l'avis" />
 
       </form>
     </div>
